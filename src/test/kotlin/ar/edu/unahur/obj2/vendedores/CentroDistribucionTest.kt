@@ -1,11 +1,7 @@
 package ar.edu.unahur.obj2.vendedores
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.ints.shouldBeEven
-import io.kotest.matchers.ints.shouldBeExactly
-import io.kotest.matchers.shouldBe
-import javax.xml.stream.events.ProcessingInstruction
 
 class CentroDistribucionTest : DescribeSpec({
     //Provincias
@@ -21,19 +17,27 @@ class CentroDistribucionTest : DescribeSpec({
     val tresArroyos = Ciudad(buenosAires)
 
     //Certificaciones
-    val cert1 = Certificacion(true,20)
-    val cert2 = Certificacion(true,5)
-    val cert3 = Certificacion(false,10)
-
-    val centroDistribucion = CentroDistribucion(cosquin, mutableListOf())
+    val cert1 = Certificacion(true, 20)
+    val cert2 = Certificacion(true, 5)
+    val cert3 = Certificacion(false, 10)
 
     val viajante = Viajante(listOf(misiones, cordoba, neuquen))
+    val centroDistribucion = CentroDistribucion(cosquin)
+
 
     describe("Centro Distribucion") {
-        describe("agrego vendedor") {
-            centroDistribucion.vendedores.add(viajante)
-            it("Se agregó el vendedor") {
-                centroDistribucion.vendedores.size.shouldBeExactly(1)
+//        describe("agrego vendedor") {
+//            centroDistribucion.agregarVendedor(viajante)
+//            it("Se agregó el vendedor") {
+//                centroDistribucion.size.shouldBeExactly(1)
+//            }
+//        }
+
+        describe("error al duplicar vendedor") {
+            centroDistribucion.agregarVendedor(viajante)
+
+            shouldThrow<Exception> {
+                centroDistribucion.agregarVendedor(viajante)
             }
         }
     }
