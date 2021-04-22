@@ -26,13 +26,6 @@ class CentroDistribucionTest : DescribeSpec({
 
 
     describe("Centro Distribucion") {
-//        describe("agrego vendedor") {
-//            centroDistribucion.agregarVendedor(viajante)
-//            it("Se agregó el vendedor") {
-//                centroDistribucion.size.shouldBeExactly(1)
-//            }
-//        }
-
         describe("error al duplicar vendedor") {
             centroDistribucion.agregarVendedor(viajante)
 

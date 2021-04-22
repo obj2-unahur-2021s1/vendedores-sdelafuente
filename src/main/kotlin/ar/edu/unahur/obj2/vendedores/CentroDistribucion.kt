@@ -5,7 +5,7 @@ class CentroDistribucion(
 ) {
     val vendedores = mutableListOf<Vendedor>()
 
-    fun getEstrella() = vendedores.maxBy { it.puntajeCertificaciones() }
+    fun obtenerVendedorEstrella() = vendedores.maxBy { it.puntajeCertificaciones() }
 
     fun agregarVendedor(v: Vendedor) {
         vendedores.find { it == v }?.let {

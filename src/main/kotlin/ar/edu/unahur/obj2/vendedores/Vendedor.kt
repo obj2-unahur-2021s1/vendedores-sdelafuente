@@ -57,13 +57,13 @@ class ComercioCorresponsal(val ciudades: List<Ciudad>) : Vendedor() {
     return ciudades.contains(ciudad)
   }
 
-  fun getListaProvincias(ciudades: List<Ciudad>): Int {
+  fun obtenerListaProvincias(ciudades: List<Ciudad>): Int {
     return ciudades.distinctBy{ c -> c.provincia }.size
   }
 
   override fun esInfluyente(): Boolean {
     //comercio corresponsal: debe tener sucursales en al menos 5 ciudades, o bien en al menos 3
     // provincias considerando la provincia de cada ciudad donde tiene sucursal.
-    return ciudades.size >= 5 || getListaProvincias(ciudades) >= 3
+    return ciudades.size >= 5 || obtenerListaProvincias(ciudades) >= 3
   }
 }
